@@ -1,0 +1,57 @@
+
+  
+
+    <div class="container-fluid bs-docs-container" ng-controller='RecommendCtrl'>
+      <div class="row-fluid">
+        <div class="col-lg-3">
+          <div class="bs-sidebar">
+            <ul class="nav bs-sidenav">
+              <li ng-repeat="category in cats">
+                <%=link_to '{{category.name}}', books_path%>
+              </li> 
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="bs-docs-section">
+            <div class="page-header" ng-controller="RecommendCtrl">
+              <h1>Recommendation by Category {{categoryName}}</h1>
+              <div class="row-fluid">
+              <ul style="list-style-type: none;">
+                <li ng-repeat="recbyCat in recbyCats">
+                    <div class="span4">
+                      <h2><a href="/books/{{recbyCat.id}}">{{recbyCat.name}}</a></h2>
+                      <p>Author:{{recbyCat.info}}  </p>
+                      <p><a class="btn" href="#">View details &raquo;</a></p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--  
+  <h1>Simple by cat</h1>
+  <ul class="recs">
+    <li ng-repeat="rec in recs">
+      <h4>{{rec.name}}</h4>
+    </li>
+  </ul>
+  <h1><i>cat by http</i></h1>
+  <ul>
+    <li ng-repeat="recbyhttp in recsCatbyhttp">
+      test
+      <h4>{{recbyhttp.name}}</h4>
+  </ul>
+</div>   
+-->
+<!--      
+  <%  
+    @recommendations.each do |currRecommendation| 
+  %>
+      <h4><%=currRecommendation.name%></br></h4>
+  <% end %>
+</div>
+-->
