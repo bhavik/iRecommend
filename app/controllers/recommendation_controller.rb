@@ -29,6 +29,17 @@ class RecommendationController < ApplicationController
     end
   end
   
+   def findById 
+    logger.debug "inside movies"
+    @recommendations = Recommendation.where(:id => params[:id]).order("id desc").limit(100)
+    respond_to do |format|
+        #format.html
+        #format.xml { render :xml => @recommendations }
+        format.json { render :json => @recommendations }
+    end
+  end
+
+
   def create
     #add recommendations
     @recommendation = Recommendation.new(:name => "Blink", :info => "Malcolm Gladwell", :image_url => "http://www.google.com", :cat_id => 1)

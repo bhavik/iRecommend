@@ -2,16 +2,19 @@ class BooksController < ApplicationController
   layout "standard-layout"
   
   def index
-    @books = Books.order("created_at desc").limit(10)
-    @books.each do |book|
-      if stale?(:last_modified => book.updated_at)
-        render json: @book
-      end
+    logger.debug "inside BOOKS Controller index"
+    #@books = Books.order("created_at desc").limit(10)
+    @books = Recommendation.where(:cat_id => "1").order("created_at desc").limit(100)
+    respond_to do |format|
+        format.html
+        #format.xml { render :xml => @recommendations }
+        format.json { render :json => @books }
     end
     
   end  
   def show
-    @currBook = Books.where(:id => params[:id])
+    logger.debug "inside BOOKS Controller SHOW"
+    @currBook = Recommendation.where(:id => params[:id])
   end
   
   def create
