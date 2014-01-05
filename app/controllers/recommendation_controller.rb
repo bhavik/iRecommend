@@ -10,8 +10,18 @@ class RecommendationController < ApplicationController
         format.json { render :json => @recommendations }
     end
   end  
-
+  def show
+    logger.debug "inside SHOW"
+    @recommendations = Recommendation.order("cat_id desc, created_at desc").limit(100)
+    respond_to do |format|
+        format.html
+        #format.xml { render :xml => @recommendations }
+        format.json { render :json => @recommendations }
+    end
+  end
+  
   def getCategories
+    logger.debug "inside get Categories"
     @categories = Category.order("name desc, created_at desc").limit(100)
     respond_to do |format|
         format.json { render :json => @categories }

@@ -1,4 +1,4 @@
-
+<!--
 <script type="text/javascript">
   function convertme () {
      var x=document.getElementById("phoneno");
@@ -7,6 +7,7 @@
 
   }
 </script>
+-->
 
 <div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="detailModal" aria-hidden="true" ng-controller='RecommendCtrl'>
   <div class="modal-dialog">
@@ -47,11 +48,12 @@
       <div class="bs-docs-section">
         <div class="page-header">
           <h3>All Recommendations</h3>
-        <form class="navbar-form" role="search">
+        <!--
+		<form class="navbar-form" role="search">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" ng-model="searchbyname"/>
-            <!-- <input type="text" ng-model="phoneNumber">{{ phoneNumber | tel }}</input>
-             -->
+            <input type="text" ng-model="phoneNumber">{{ phoneNumber | tel }}</input>
+            
             <div>Raw Value: {{currencyVal}}</div>
             <div>Filtered Value: {{currencyVal | number}}</div>
             <input type='text' ng-change currency-input = " " ng-model = "currencyVal"/>
@@ -59,7 +61,8 @@
         </form>
 
         </div>
-
+		-->
+		
         <div ng-controller="RecommendCtrl">
           <div class="span4" recs"  ng-repeat="rec in recs | filter:searchbyname" class="thumbnail">
               <div class="caption">
