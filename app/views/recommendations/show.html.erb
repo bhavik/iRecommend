@@ -1,5 +1,4 @@
 
-
 <div class="container-fluid bs-docs-container" ng-controller='BookCtrl'>
   <div class="row-fluid">
     <div class="span2">
@@ -15,17 +14,17 @@
     <div class="span9">
       <div class="bs-docs-section">
         <div class="page-header">
-          <h3>Book Recommendation</h3>
-		  <h1>Rec by cat</h1>
-		  <ul>
-		    <li ng-repeat="recbyCat in recbyCats">
-		      <h4>{{recbyCat.name}}</h4>
-		       <h6 align="right"> {{recbyCat.info}}</h6>
-		    </li>
-		  </ul>
+          <h3><%=@currRec[0].name%></h3>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        <img src="/img/<%=@currRec[0].image_url%>" width="100%" height="70%"/>
+      </div>
+      <div class="span6">
+        <h4><%=@currRec[0].info%></h4>
       </div>
     </div>
   </div>
 </div>
-
 

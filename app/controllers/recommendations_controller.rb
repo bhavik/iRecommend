@@ -1,4 +1,4 @@
-class RecommendationController < ApplicationController
+class RecommendationsController < ApplicationController
   layout "standard-layout"
   
   def index
@@ -10,30 +10,42 @@ class RecommendationController < ApplicationController
         format.json { render :json => @recommendations }
     end
   end  
-  def show
-    logger.debug "inside SHOW"
+
+  def getAllRecommendations
+    logger.debug "inside index"
     @recommendations = Recommendation.order("cat_id desc, created_at desc").limit(100)
     respond_to do |format|
-        format.html
+        #format.html
         #format.xml { render :xml => @recommendations }
         format.json { render :json => @recommendations }
     end
   end
   
   def getCategories
-    logger.debug "inside get Categories"
+    logger.debug "INSIDE GET CATEGORIES"
     @categories = Category.order("name desc, created_at desc").limit(100)
     respond_to do |format|
         format.json { render :json => @categories }
     end
   end
-
+  def show
+    logger.debug "inside Recommendation Show"
+    #@recommendations = Recommendation.order("cat_id desc, created_at desc").limit(100)
+    @currRec = Recommendation.where(:id => params[:id])
+    
+    respond_to do |format|
+        format.html
+        #format.xml { render :xml => @recommendations }
+        #format.json { render :json => @recommendations }
+    end
+  end
+  
   
   def findByCatId 
     logger.debug "inside movies"
     @recommendations = Recommendation.where(:cat_id => params[:catId]).order("cat_id desc, created_at desc").limit(100)
     respond_to do |format|
-        format.html
+        #format.html
         #format.xml { render :xml => @recommendations }
         format.json { render :json => @recommendations }
     end

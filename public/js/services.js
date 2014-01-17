@@ -2,36 +2,46 @@
 
 var app = angular.module('recommendServices', ['ngResource']);
 app.factory('Rec', function($resource) {
-	var data = $resource('recommendation/index.json', {}, {
+	var data = $resource('/recommendations/getAllRecommendations.json', {}, {
 		query: {method:'GET', params:{}, isArray:true}
 	});
 	return data;
 });
 
 app.factory('Books', function($resource) {
-	var data = $resource('books/index.json', {}, {
+
+	var data = $resource('/books/getAllBooks.json', {}, {
 		query: {method:'GET', params:{}, isArray:true}
 	});
 	return data;
 });
 
+app.factory('Movies', function($resource) {
+
+	var data = $resource('/movies/getAllMovies.json', {}, {
+		query: {method:'GET', params:{}, isArray:true}
+	});
+	return data;
+});
+
+
 app.factory('Cat', function($resource) {
-	var data = $resource('recommendation/getCategories.json', {}, {
+	var data = $resource('/recommendations/getCategories.json', {}, {
 		query: {method:'GET', params:{}, isArray:true}
 	});
 	return data;
 });
 
 app.factory('RecbyCategory', function($resource){
-	var data = $resource('recommendation/findByCatId.json', {},{
-		query: {method:'GET', params:{catId:'1'}, isArray:true}
+	var data = $resource('/recommendations/findByCatId.json', {},{
+		query: {method:'GET', params:{cat_id:'1'}, isArray:true}
 	});
 	return data;
 });
 
 app.factory('RecbyId', function($resource){
 
-	var data = $resource('recommendation/findById.json', {},{
+	var data = $resource('/recommendations/findById.json', {},{
 		query: {method:'GET', params:{id: '@recId'}, isArray:true}
 	});
 
@@ -39,18 +49,11 @@ app.factory('RecbyId', function($resource){
 });
 
 
-app.factory('Books', function($resource){
-	var data = $resource('books/index.json', {},{
-		query: {method:'GET', params:{catId:'1'}, isArray:true}
-	});
-	return data;
-});
-
 
 app.factory('Recbyhttp', function($http){
  var ret =  {
 	recByHttp: function() {
-		$http({method:'GET', url:'recommendation/findByCatId.json'}).
+		$http({method:'GET', url:'recommendations/findByCatId.json'}).
 		success(function(data, status, headers, config){
 			return  data;
 		}).

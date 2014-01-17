@@ -1,8 +1,8 @@
-class BooksController < ApplicationController
+class MoviesController < ApplicationController
   layout "standard-layout"
   
   def index
-    logger.debug "inside Book INDEX" 
+    logger.debug "inside MoviesController" 
     @books = Recommendation.where(:cat_id => 2).order("cat_id desc, created_at desc").limit(100)
     respond_to do |format|
         format.html
@@ -19,9 +19,9 @@ class BooksController < ApplicationController
     end
   end
 
-  def getAllBooks
-    logger.debug "inside Get All Books" 
-    @books = Recommendation.where(:cat_id => '2').order("cat_id desc, created_at desc").limit(100)
+  def getAllMovies
+    logger.debug "inside Get All Movies" 
+    @books = Recommendation.where(:cat_id => '1').order("cat_id desc, created_at desc").limit(100)
     respond_to do |format|
         format.html
         #format.xml { render :xml => @books }
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   end
   
   def show
-    logger.debug "inside SHOWs" + params[:id]
+    logger.debug "inside MoviesController show" + params[:id]
     #@currBook = Recommendation.find(params[:id])
     @currBook = Recommendation.where(:id => params[:id])
     respond_to do |format|
