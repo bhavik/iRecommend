@@ -7,6 +7,8 @@ RecommendAPI::Application.routes.draw do
       get :index
       get :getCategories
       get :getAllRecommendations
+      get :add_recommendation
+      get :recommendation_by_user
     end
   end
   
