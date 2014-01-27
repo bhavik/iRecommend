@@ -1,11 +1,36 @@
 RecommendAPI::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  resources :recommendations
-  resources :book
-   resources :categories
+  
+  resources :recommendations do
+    collection do
+      get :index
+      get :getCategories
+      get :getAllRecommendations
+      get :add_recommendation
+      get :recommendation_by_user
+    end
+  end
+  
+  resources :books do
+    collection do
+      get :index
+      get :getAllBooks
+      get :show
+    end
+  end
+  
+  resources :movies do
+    collection do
+      get :index
+      get :getAllMovies
+      get :show
+    end
+  end
+
+  resources :categories
    
-  match 'recommendation/addRecommendation' => 'recommendation#addRecommendation', :via => [:get]
+  match 'recommendations/addRecommendation' => 'recommendation#addRecommendation', :via => [:get]
 
   #map.recommendation_addrecommendation 'recommendation/addrecommendation', :controller => 'recommendation', :action => 'addRecommendation', :conditions => { :method => :get }
 
@@ -55,11 +80,11 @@ RecommendAPI::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'recommendation#index'
+   root :to => 'recommendations#index'
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id))(.:format)'
+  #match ':controller(/:action(/:id))(.:format)'
 end

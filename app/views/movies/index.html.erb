@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="detailModal" aria-hidden="true" ng-controller='BookCtrl'>
+<div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="detailModal" aria-hidden="true" ng-controller='MovieCtrl'>
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -22,13 +22,12 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
- <div class="container-fluid bs-docs-container" ng-controller='BookCtrl'>
+ <div class="container-fluid bs-docs-container" ng-controller='MovieCtrl'>
   <div class="row-fluid">
     <div class="span2">
       <div class="bs-sidebar">
         <ul class="nav bs-sidenav">
           <li ng-repeat="category in cats">
-
             <a ng-href="/{{category.name}}">{{category.name}}</a>
           </li> 
         </ul>
@@ -39,11 +38,11 @@
         <div class="page-header">
           <h3>Book Recommendations</h3>
         <div ng-controller="BookCtrl">
-          <div class="span4" recs  ng-repeat="book in books | filter:searchbyname" class="thumbnail">
+          <div class="span4" recs  ng-repeat="movie in movies | filter:searchbyname" class="thumbnail">
               <div class="caption">
-                <img src="/img/{{book.image_url}}" width="100%" height="70%"/>
-                <h3 style="padding-left:10px"><a href="/recommendations/{{book.id}}">{{book.name}}</a></h3>
-                <a href="#" data-toggle="modal" data-target="#viewDetails" ng-click="getDetails(book.id)">View Details</a>
+                <img src="/img/{{movie.image_url}}" width="100%" height="70%"/>
+                <h3 style="padding-left:10px"><a href="/recommendations/{{movie.id}}">{{movie.name}}</a></h3>
+                <a href="#" data-toggle="modal" data-target="#viewDetails" ng-click="getDetails(movie.id)">View Details</a>
               </div>
           </div>
         </div>
